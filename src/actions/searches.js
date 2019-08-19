@@ -6,5 +6,7 @@ const setSearch = search => {
 }
 
 export const saveSearch = searchTerm => {
-  return dispatch(setSearch(searchTerm))
+  return dispatch => {
+    return dispatch(setSearch(searchTerm))
+  }
 }
