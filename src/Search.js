@@ -1,5 +1,7 @@
 import React, { Component} from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { saveSearch } from './actions/searches';
 
 class Search extends Component {
 
@@ -18,7 +20,8 @@ class Search extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(e);
+    console.log("Search the api!");
+    this.props.saveSearch();
   }
 
   render() {
