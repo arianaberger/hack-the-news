@@ -20,8 +20,9 @@ class Search extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("Search the api!");
-    this.props.saveSearch();
+    const search = this.state["search"]
+    console.log("Search the api!", search);
+    this.props.saveSearch(search);
   }
 
   render() {
@@ -29,12 +30,11 @@ class Search extends Component {
       <div>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="searchInput">
-            <Form.Label>Search:</Form.Label>
             <Form.Control
               required
               type="text"
               name="search"
-              placeholder="Search"
+              placeholder="Search..."
               value={this.state.search}
               onChange={this.handleOnChange}
              />
@@ -50,4 +50,12 @@ class Search extends Component {
   }
 }
 
-export default Search;
+const mapStateToProps = (state) => {
+  return {
+    searches: state.searches
+  }
+}
+
+const mapDispatchToProps = { saveSearch }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
