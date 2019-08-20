@@ -48,15 +48,18 @@ class Search extends Component {
     .then(results => {
       this.setState({
         results: results.hits,
-        pagesTotal: results.nbPages
+        pagesTotal: results.nbPages,
       })
     })
     .catch(error => console.log(error))
   }
 
-  nextPage = page => {
-
+  incrementPage = page => {
+    this.setState({
+      currentPage: page++
+    })
   }
+
 
 //Form has automatic validation for empty field
   render() {
@@ -87,6 +90,8 @@ class Search extends Component {
         pagesTotal={this.state.pagesTotal}
         currentPage={this.state.currentPage}
         handleAPI={this.handleAPI}
+        search={this.state.search}
+        incrementPage={this.incrementPage}
         />
 
       </div>

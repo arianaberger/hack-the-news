@@ -1,11 +1,15 @@
 import React from 'react';
 
 const Next = (props) => {
-  return (
-    <div>
-    <button>Hello</button>
-    </div>
-  )
+  for (let i = 1; i <= props.pagesTotal; i++) {
+    return (
+      <button
+        onClick={() => {
+          props.handleAPI(props.search)
+          props.incrementPage(props.currentPage)
+        }}>Next</button>
+    )
+  }
 }
 
 export default Next
