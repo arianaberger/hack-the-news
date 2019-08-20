@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { saveSearch } from './actions/searches';
-import DisplaySearches from './DisplaySearches';
+import SearchTerms from './SearchTerms';
 import Results from './Results';
 
 class Search extends Component {
@@ -25,20 +25,25 @@ class Search extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const search = this.state.search
+    const form = document.getElementById("searchForm")
 
     //Save search term to redux store and query api
     this.props.saveSearch(search);
     this.handleAPI(search)
+    //Form is not resetting
+    form.reset();
   }
 
   //Query the api and add results to component's state
+  //Currently giving warning in console about deprecated components
   handleAPI = search => {
-    return fetch(`http://hn.algolia.com/api/v1/search?query=${search}`)
+    return fetch(`http://hn.algolia.com/api/v1/search?query=${search}?page=3`)
     .then(resp => resp.json())
     .then(results => {
       this.setState({
         results: results.hits
       })
+      console.log(results)
     })
     .catch(error => console.log(error))
   }
@@ -48,7 +53,7 @@ class Search extends Component {
     console.log(this.state.results)
     return (
       <div>
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit} id="searchForm">
           <Form.Group controlId="searchInput">
             <Form.Control
               required
@@ -66,7 +71,7 @@ class Search extends Component {
           </div>
         </Form>
 
-        <DisplaySearches searches={this.props.searches} />
+        <SearchTerms searches={this.props.searches} />
         <Results results={this.state.results} />
 
       </div>
