@@ -4,16 +4,18 @@ import { connect } from 'react-redux';
 import { saveSearch } from './actions/searches';
 import SearchTerms from './SearchTerms';
 import Results from './Results';
+import Next from './Next';
 
 class Search extends Component {
 
-  //Doesn't make sense at the moment to completely move search state into Redux
+  //Doesn't seem to make sense to completely move search state into Redux
   constructor(props) {
     super(props);
     this.state = {
       search: '',
       results: [],
-      pages: 1
+      pagesTotal: 1,
+      currentPage: 1
     }
   }
 
@@ -26,28 +28,34 @@ class Search extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const search = this.state.search
-    const form = document.getElementById("searchForm")
 
     //Save search term to redux store and query api
     this.props.saveSearch(search);
     this.handleAPI(search)
+
     //Form is not resetting
+    const form = document.getElementById("searchForm")
     form.reset();
   }
 
   //Query the api and add results to component's state
   //Currently giving warning in console about deprecated components
   handleAPI = search => {
-    let pages = this.state.pages
-    return fetch(`http://hn.algolia.com/api/v1/search?query=${search}?page=${pages}`)
+    let currentPage = this.state.currentPage
+
+    return fetch(`http://hn.algolia.com/api/v1/search?query=${search}?page=${currentPage}`)
     .then(resp => resp.json())
     .then(results => {
       this.setState({
         results: results.hits,
-        pages: results.nbPages
+        pagesTotal: results.nbPages
       })
     })
     .catch(error => console.log(error))
+  }
+
+  nextPage = page => {
+
   }
 
 //Form has automatic validation for empty field
@@ -75,6 +83,11 @@ class Search extends Component {
 
         <SearchTerms searches={this.props.searches} />
         <Results results={this.state.results} />
+        <Next
+        pagesTotal={this.state.pagesTotal}
+        currentPage={this.state.currentPage}
+        handleAPI={this.handleAPI}
+        />
 
       </div>
     )
