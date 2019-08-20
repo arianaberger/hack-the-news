@@ -1,5 +1,6 @@
 import React from 'react';
-import Moment from 'react-moment';
+// import Moment from 'react-moment';
+//Moment is giving me issues:  Moment format="MMM DD, YYYY"
 
 const Results = (props) => {
 
@@ -10,7 +11,7 @@ const Results = (props) => {
     let date = result.created_at
 
     return (
-      <div className="Result">
+      <div className="Result" key={result.objectID}>
         <a
           className="App-link"
           href={url} target='_blank' rel="noopener noreferrer">{title}
@@ -18,16 +19,13 @@ const Results = (props) => {
         <div className="ResultSub">
           <span>{author}</span>
           <span>
-            | <Moment format="MMM DD, YYYY">
               {date}
-            </Moment>
          </span>
        </div>
      </div>
     )
   })
 
-  // const results = 'hello'
   return (
     <div className="Results">
       {results}

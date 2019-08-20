@@ -12,7 +12,8 @@ class Search extends Component {
     super(props);
     this.state = {
       search: '',
-      results: []
+      results: [],
+      pages: 1
     }
   }
 
@@ -37,13 +38,14 @@ class Search extends Component {
   //Query the api and add results to component's state
   //Currently giving warning in console about deprecated components
   handleAPI = search => {
-    return fetch(`http://hn.algolia.com/api/v1/search?query=${search}?page=3`)
+    let pages = this.state.pages
+    return fetch(`http://hn.algolia.com/api/v1/search?query=${search}?page=${pages}`)
     .then(resp => resp.json())
     .then(results => {
       this.setState({
-        results: results.hits
+        results: results.hits,
+        pages: results.nbPages
       })
-      console.log(results)
     })
     .catch(error => console.log(error))
   }
