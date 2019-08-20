@@ -52,10 +52,10 @@ class Search extends Component {
   }
 }
 
-//Use to display all saved search terms in a separate component?
+//Need to look into why I have to call state.state to access search array
 const mapStateToProps = (state) => {
   return {
-    searches: state.searches
+    searches: state.state.searches
   }
 }
 
