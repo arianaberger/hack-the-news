@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { saveSearch } from './actions/searches';
+import DisplaySearches from './DisplaySearches';
 
 class Search extends Component {
 
@@ -45,6 +46,7 @@ class Search extends Component {
             </Button>
           </div>
         </Form>
+        <DisplaySearches searches={this.props.searches} />
       </div>
     )
   }
