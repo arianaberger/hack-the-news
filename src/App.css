@@ -21,6 +21,26 @@
 
 .App-link {
   color: #61dafb;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.Results {
+  text-align: left;
+  font-size: 0.75em;
+}
+
+.Result {
+  padding: 10px;
+}
+
+.ResultSub {
+  margin-top: 5px;
+  font-size: 0.75em;
+}
+
+span {
+  margin-right: 5px;
 }
 
 @keyframes App-logo-spin {

@@ -10,16 +10,27 @@ const Results = (props) => {
     let date = result.created_at
 
     return (
-      <li>
-        {author} - <a href={url} target='_blank'>{title}</a> - <Moment format="MMM DD, YYYY">{date}</Moment>
-      </li>
+      <div className="Result">
+        <a
+          className="App-link"
+          href={url} target='_blank'>{title}
+        </a>
+        <div className="ResultSub">
+          <span>{author}</span>
+          <span>
+            | <Moment format="MMM DD, YYYY">
+              {date}
+            </Moment>
+         </span>
+       </div>
+     </div>
     )
   })
 
   // const results = 'hello'
   return (
-    <div>
-      <ul>{results}</ul>
+    <div className="Results">
+      {results}
     </div>
   )
 }
