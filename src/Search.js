@@ -41,7 +41,7 @@ class Search extends Component {
   //Query the api and add results to component's state
   handleAPI = search => {
     let currentPage = this.state.currentPage
-    console.log(currentPage)
+    console.log('in handleAPI', currentPage)
 
     return fetch(`http://hn.algolia.com/api/v1/search?query=${search}?page=${currentPage}`)
     .then(resp => resp.json())
@@ -55,17 +55,22 @@ class Search extends Component {
     .catch(error => console.log(error))
   }
 
+  //Function only works second time I click it/numbering is off
   incrementPage = page => {
+    console.log('before incrementPage', page)
     this.setState({
-      currentPage: page + 1
+      currentPage: page + 1,
     })
+    console.log('after incrementPage', this.state.currentPage)
+    this.handleAPI(this.state.search)
   }
 
-  // decrementPage = page => {
-  //   this.setState({
-  //     currentPage: page - 1
-  //   })
-  // }
+  decrementPage = page => {
+    this.setState({
+      currentPage: page - 1
+    })
+    this.handleAPI(this.state.search)
+  }
 
 //Form has automatic validation for empty field
   render() {
@@ -102,6 +107,7 @@ class Search extends Component {
           handleAPI={this.handleAPI}
           search={this.state.search}
           incrementPage={this.incrementPage}
+          decrementPage={this.decrementPage}
           />
         }
         </div>

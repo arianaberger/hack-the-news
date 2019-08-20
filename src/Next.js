@@ -1,15 +1,25 @@
 import React from 'react';
 
 const Next = (props) => {
-  for (let i = 1; i <= props.pagesTotal; i++) {
+  for (let i = 0; i < props.pagesTotal; i++) {
     return (
+    <div>
+    <button
+      onClick={() => {
+        props.decrementPage(props.currentPage)
+      }}>
+        Previous
+      </button>
+
       <button
         onClick={() => {
-          props.handleAPI(props.search)
           props.incrementPage(props.currentPage)
         }}>
-          >>
-        </button>
+          Next
+      </button>
+
+
+      </div>
     )
   }
 }
