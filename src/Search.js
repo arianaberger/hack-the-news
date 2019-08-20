@@ -21,7 +21,7 @@ class Search extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const search = this.state["search"]
-    console.log("Search the api!", search);
+    console.log("Search the api with:", search);
     this.props.saveSearch(search);
   }
 
@@ -50,6 +50,7 @@ class Search extends Component {
   }
 }
 
+//Use to display all saved search terms in a separate component?
 const mapStateToProps = (state) => {
   return {
     searches: state.searches
@@ -58,4 +59,5 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = { saveSearch }
 
+//Connect to store and allow dispatching to reducer
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

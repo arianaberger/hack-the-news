@@ -6,10 +6,10 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 
-import searches from './reducers/searches'
+import state from './reducers/searches'
 
 const reducers = combineReducers({
-  searches,
+  state,
 });
 
 const middleware = [thunk];
