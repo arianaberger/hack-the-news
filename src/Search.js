@@ -39,7 +39,6 @@ class Search extends Component {
   }
 
   //Query the api and add results to component's state
-  //Currently giving warning in console about deprecated components
   handleAPI = search => {
     let currentPage = this.state.currentPage
     console.log(currentPage)
@@ -62,6 +61,11 @@ class Search extends Component {
     })
   }
 
+  // decrementPage = page => {
+  //   this.setState({
+  //     currentPage: page - 1
+  //   })
+  // }
 
 //Form has automatic validation for empty field
   render() {
@@ -88,13 +92,20 @@ class Search extends Component {
 
         <SearchTerms searches={this.props.searches} />
         <Results results={this.state.results} />
-        <Next
-        pagesTotal={this.state.pagesTotal}
-        currentPage={this.state.currentPage}
-        handleAPI={this.handleAPI}
-        search={this.state.search}
-        incrementPage={this.incrementPage}
-        />
+
+        <div>
+        {this.state.results.length === 0 ?
+          null :
+          <Next
+          pagesTotal={this.state.pagesTotal}
+          currentPage={this.state.currentPage}
+          handleAPI={this.handleAPI}
+          search={this.state.search}
+          incrementPage={this.incrementPage}
+          />
+        }
+        </div>
+
 
       </div>
     )

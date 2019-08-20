@@ -7,7 +7,9 @@ const Next = (props) => {
         onClick={() => {
           props.handleAPI(props.search)
           props.incrementPage(props.currentPage)
-        }}>Next</button>
+        }}>
+          >>
+        </button>
     )
   }
 }
