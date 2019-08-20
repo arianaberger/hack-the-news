@@ -42,10 +42,12 @@ class Search extends Component {
   //Currently giving warning in console about deprecated components
   handleAPI = search => {
     let currentPage = this.state.currentPage
+    console.log(currentPage)
 
     return fetch(`http://hn.algolia.com/api/v1/search?query=${search}?page=${currentPage}`)
     .then(resp => resp.json())
     .then(results => {
+      console.log(results)
       this.setState({
         results: results.hits,
         pagesTotal: results.nbPages,
@@ -56,7 +58,7 @@ class Search extends Component {
 
   incrementPage = page => {
     this.setState({
-      currentPage: page++
+      currentPage: page + 1
     })
   }
 
