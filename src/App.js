@@ -9,8 +9,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+
         <Search />
         <Results />
+
         <a
           className="App-link"
           href="https://hn.algolia.com/api"

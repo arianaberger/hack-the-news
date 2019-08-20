@@ -6,10 +6,12 @@ import DisplaySearches from './DisplaySearches';
 
 class Search extends Component {
 
+  //Eventually move completely into Redux
   constructor(props) {
     super(props);
     this.state = {
-      search: ''
+      search: '',
+      results: []
     }
   }
 
@@ -21,11 +23,28 @@ class Search extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
+    //Change to access redux state
     const search = this.state["search"]
     console.log("Search the api with:", search);
     this.props.saveSearch(search);
+
+    this.handleAPI(search)
+
   }
 
+  handleAPI = search => {
+    return fetch(`http://hn.algolia.com/api/v1/search?query=${search}`)
+    .then(resp => resp.json())
+    .then(results => {
+      this.setState({
+        results: results
+      })
+    })
+    .catch(error => console.log(error))
+  }
+
+//Form needs validation for empty string
   render() {
     return (
       <div>

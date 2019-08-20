@@ -8,7 +8,7 @@ const DisplaySearches = (props) => {
 
   return(
     <div>
-      {searchTerms}
+      Your recent search terms: {searchTerms}
     </div>
   )
 }
