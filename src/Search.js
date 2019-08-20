@@ -3,10 +3,11 @@ import { Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { saveSearch } from './actions/searches';
 import DisplaySearches from './DisplaySearches';
+import Results from './Results';
 
 class Search extends Component {
 
-  //Eventually move completely into Redux
+  //Eventually move search completely into Redux
   constructor(props) {
     super(props);
     this.state = {
@@ -30,22 +31,23 @@ class Search extends Component {
     this.props.saveSearch(search);
 
     this.handleAPI(search)
-
   }
 
+  //Query the api and add results to component state
   handleAPI = search => {
     return fetch(`http://hn.algolia.com/api/v1/search?query=${search}`)
     .then(resp => resp.json())
     .then(results => {
       this.setState({
-        results: results
+        results: results.hits
       })
     })
     .catch(error => console.log(error))
   }
 
-//Form needs validation for empty string
+//Form has automatic validation for empty field
   render() {
+    console.log(this.state.results)
     return (
       <div>
         <Form onSubmit={this.handleSubmit}>
@@ -65,7 +67,9 @@ class Search extends Component {
             </Button>
           </div>
         </Form>
+
         <DisplaySearches searches={this.props.searches} />
+        <Results results={this.state.results} />
       </div>
     )
   }

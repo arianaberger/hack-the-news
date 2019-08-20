@@ -2,7 +2,6 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Search from './Search';
-import Results from './Results';
 
 function App() {
   return (
@@ -11,7 +10,6 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
 
         <Search />
-        <Results />
 
         <a
           className="App-link"
