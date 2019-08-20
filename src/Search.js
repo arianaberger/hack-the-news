@@ -7,7 +7,7 @@ import Results from './Results';
 
 class Search extends Component {
 
-  //Eventually move search completely into Redux
+  //Doesn't make sense at the moment to completely move search state into Redux
   constructor(props) {
     super(props);
     this.state = {
@@ -24,16 +24,14 @@ class Search extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    const search = this.state.search
 
-    //Change to access redux state
-    const search = this.state["search"]
-    console.log("Search the api with:", search);
+    //Save search term to redux store and query api
     this.props.saveSearch(search);
-
     this.handleAPI(search)
   }
 
-  //Query the api and add results to component state
+  //Query the api and add results to component's state
   handleAPI = search => {
     return fetch(`http://hn.algolia.com/api/v1/search?query=${search}`)
     .then(resp => resp.json())
@@ -70,6 +68,7 @@ class Search extends Component {
 
         <DisplaySearches searches={this.props.searches} />
         <Results results={this.state.results} />
+
       </div>
     )
   }
