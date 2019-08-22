@@ -1,5 +1,4 @@
 import React, { Component} from 'react';
-import { Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { saveSearch } from './actions/searches';
 import SearchTerms from './SearchTerms';
@@ -78,31 +77,14 @@ class Search extends Component {
 //Form has automatic validation for empty field
   render() {
     console.log(this.state.results)
+
     return (
       <div>
         <SearchForm
           handleSubmit={this.handleSubmit}
-          value={this.state.search}
-          onChange={this.handleOnChange}
+          search={this.state.search}
+          handleOnChange={this.handleOnChange}
         />
-
-        <Form onSubmit={this.handleSubmit} id="searchForm">
-          <Form.Group controlId="searchInput">
-            <Form.Control
-              required
-              type="text"
-              name="search"
-              placeholder="Search..."
-              value={this.state.search}
-              onChange={this.handleOnChange}
-             />
-          </Form.Group>
-          <div>
-            <Button variant="info" type="submit" block>
-              Submit
-            </Button>
-          </div>
-        </Form>
 
         <SearchTerms
           searches={this.props.searches}
