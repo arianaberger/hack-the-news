@@ -16,7 +16,7 @@ const SearchTerms = (props) => {
 
   return(
     <Dropdown>
-      <Dropdown.Toggle variant="secondary" size="sm">
+      <Dropdown.Toggle variant="info" size="sm">
         Recent searches...
       </Dropdown.Toggle>
 
