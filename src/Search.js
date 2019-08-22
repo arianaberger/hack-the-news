@@ -51,10 +51,6 @@ class Search extends Component {
     .catch(error => console.log(error))
   }
 
-  pageToggle = () => {
-    this.state.nextPage = !this.state.nextPage
-  }
-
   changePage = (page, change) => {
     if (change) {
       this.setState({currentPage: page + 1})
