@@ -85,19 +85,18 @@ class Search extends Component {
           handleSubmit={this.handleSubmit}
           search={this.state.search}
           handleOnChange={this.handleOnChange}
+          searches={this.props.searches}
         />
       </div>
 
-        <SearchTerms
-          searches={this.props.searches}
-        />
-
+      <div className="Results">
         {this.state.results.length === 0 ?
           "There are no search results to display" :
           <Results
             results={this.state.results}
           />
         }
+      </div>
 
         <div>
           {this.state.results.length === 0 ?

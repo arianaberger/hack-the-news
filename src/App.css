@@ -14,7 +14,7 @@
   height: 40vmin;
   pointer-events: none;;
   height: 10%;
-  width: 10%
+  width: 10%;
 }
 
 .App-link {
@@ -30,16 +30,27 @@
 
 .Results {
   text-align: left;
-  font-size: 0.75em;
+  font-size: 0.9em;
+  border: #fff;
+  border-style: solid;
+  padding: 5px;
+  margin: 10px;
+  width: 60%
+
 }
 
 .Result {
-  padding: 10px;
+  margin: 15px;
 }
 
 .ResultSub {
   margin-top: 5px;
+  margin-bottom: 10px;
   font-size: 0.75em;
+}
+
+.Next {
+  margin: 15px;
 }
 
 span {

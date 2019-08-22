@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
+import SearchTerms from './SearchTerms';
 
 
 const SearchForm = (props) => {
@@ -17,13 +18,17 @@ const SearchForm = (props) => {
               placeholder="Search..."
               value={props.search}
               onChange={props.handleOnChange}
+              size="sm"
              />
           </Form.Group>
         </Col>
         <Col>
-          <Button variant="light" type="submit" block>
-            Submit
+          <Button variant="light" type="submit" block size="sm">
+            Search
           </Button>
+        </Col>
+        <Col>
+          <SearchTerms searches={props.searches} />
         </Col>
       </Form.Row>
     </Form>

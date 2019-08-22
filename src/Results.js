@@ -25,15 +25,13 @@ const Results = (props) => {
          </div>
        </div>
      )
-    } else {
-      return
     }
   })
 
   return (
-    <div className="Results">
+    <>
       {results}
-    </div>
+    </>
   )
 }
 

@@ -6,6 +6,7 @@ import { Button, Form, Col } from 'react-bootstrap';
 const Next = (props) => {
   for (let i = 0; i < props.pagesTotal; i++) {
     return (
+      <div className="Next">
     <Form.Row>
       <Col>
         <Button
@@ -28,6 +29,7 @@ const Next = (props) => {
         </Button>
       </Col>
     </Form.Row>
+    </div>
     )
   }
 }
