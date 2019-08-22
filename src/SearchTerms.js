@@ -8,16 +8,15 @@ const SearchTerms = (props) => {
     if (props.searches.length === 0) {
       return "No searches yet"
     } else {
-      props.searches.map(term => (
-    <Dropdown.Item>${term}</Dropdown.Item>
-  ))
+      return (props.searches.map(term => (
+        <Dropdown.Item key={term}>{term}</Dropdown.Item>
+      )))
+    }
   }
-}
-
 
   return(
     <Dropdown>
-      <Dropdown.Toggle>
+      <Dropdown.Toggle variant="secondary" size="sm">
         Your recent searches...
       </Dropdown.Toggle>
 
