@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Form, Col } from 'react-bootstrap';
+import Previous from './Previous';
 
 
 //Buttons should only appears once search is started/user is on 2nd page for back button
@@ -9,14 +10,7 @@ const Next = (props) => {
       <div className="Next">
     <Form.Row>
       <Col>
-        <Button
-          size="sm"
-          variant="light"
-          onClick={() => {
-            props.decrementPage(props.currentPage)
-          }}>
-            Previous
-          </Button>
+        <Previous total={props.pagesTotal} currentPage={props.currentPage} decrementPage={props.decrementPage}/>
       </Col>
       <Col>
         <Button
@@ -26,7 +20,7 @@ const Next = (props) => {
             props.incrementPage(props.currentPage)
           }}>
             Next
-        </Button>
+          </Button>
       </Col>
     </Form.Row>
     </div>
