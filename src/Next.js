@@ -8,7 +8,7 @@ const Next = (props) => {
         size="sm"
         variant="light"
         onClick={() => {
-          props.changePage(props.currentPage, props.next)
+          props.changePage(props.change)
         }}>
           Next
       </Button>

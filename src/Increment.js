@@ -4,7 +4,7 @@ import Previous from './Previous';
 import Next from './Next';
 
 const Increment = (props) => {
-
+  
   const {changePage, pagesTotal, currentPage, next, previous} = props
 
   return (

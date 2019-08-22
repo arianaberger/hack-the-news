@@ -51,11 +51,12 @@ class Search extends Component {
     .catch(error => console.log(error))
   }
 
-  changePage = (page, change) => {
+  changePage = (change) => {
+    const currentPage = this.state.currentPage
     if (change) {
-      this.setState({currentPage: page + 1})
+      this.setState({currentPage: currentPage + 1 })
     } else {
-      this.setState({currentPage: page - 1})
+      this.setState({currentPage: currentPage - 1})
     }
     this.handleAPI(this.state.search)
   }
