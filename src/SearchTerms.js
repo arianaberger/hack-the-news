@@ -1,22 +1,30 @@
 import React from 'react';
-import Select from 'react-select';
+import { Dropdown } from 'react-bootstrap';
+
 
 const SearchTerms = (props) => {
 
-  const searchTerms = props.searches.map(term => (
-    `[ ${term} ]`
+  const SearchTerms = () => {
+    if (props.searches.length === 0) {
+      return "No searches yet"
+    } else {
+      props.searches.map(term => (
+    <Dropdown.Item>${term}</Dropdown.Item>
   ))
+  }
+}
+
 
   return(
-    <>
-      <ul>{searchTerms}</ul>
-      <div>
-        <Select
-          options={SearchTerms}
-          defaultValue="Your recent searches..."
-        />
-      </div>
-    </>
+    <Dropdown>
+      <Dropdown.Toggle>
+        Your recent searches...
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <SearchTerms />
+      </Dropdown.Menu>
+    </Dropdown>
   )
 }
 

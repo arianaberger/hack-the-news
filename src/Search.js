@@ -79,19 +79,25 @@ class Search extends Component {
     console.log(this.state.results)
 
     return (
-      <div>
+      <>
+      <div className="Search-input">
         <SearchForm
           handleSubmit={this.handleSubmit}
           search={this.state.search}
           handleOnChange={this.handleOnChange}
         />
+      </div>
 
         <SearchTerms
           searches={this.props.searches}
         />
-        <Results
-          results={this.state.results}
-        />
+
+        {this.state.results.length === 0 ?
+          "There are no search results to display" :
+          <Results
+            results={this.state.results}
+          />
+        }
 
         <div>
           {this.state.results.length === 0 ?
@@ -106,7 +112,7 @@ class Search extends Component {
             />
           }
         </div>
-      </div>
+      </>
     )
   }
 }
