@@ -2,10 +2,7 @@ import React from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
 import SearchTerms from './SearchTerms';
 
-
 const SearchForm = (props) => {
-  console.log(props)
-
   return(
     <Form onSubmit={props.handleSubmit} id="searchForm">
       <Form.Row>

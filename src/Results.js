@@ -5,6 +5,7 @@ import Moment from 'react-moment';
 const Results = (props) => {
 
   const results = props.results.map(result => {
+    //Only show results with a URL link
     if (result.url || result.story_url) {
       let author = result.author
       let title = result.title || result.story_title

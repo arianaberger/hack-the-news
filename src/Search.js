@@ -1,29 +1,27 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { saveSearch } from './actions/searches';
-import SearchTerms from './SearchTerms';
 import Results from './Results';
-import Next from './Next';
+import Increment from './Increment';
 import SearchForm from './SearchForm';
 
 class Search extends Component {
 
-  //Doesn't seem to make sense to completely move search state into Redux
+  //Search terms only moved into Redux state once search button is submitted
   constructor(props) {
     super(props);
     this.state = {
       search: '',
       results: [],
       pagesTotal: 1,
-      currentPage: 1
+      currentPage: 0,
+      next: true,
+      previous: false
     }
   }
 
   handleOnChange = e => {
-    console.log(e)
-    this.setState({
-      [e.target.name]: e.target.value
-    })
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   handleSubmit = e => {
@@ -34,20 +32,17 @@ class Search extends Component {
     this.props.saveSearch(search);
     this.handleAPI(search)
 
-    //Form is not resetting
-    const form = document.getElementById("searchForm")
-    form.reset();
+    //Reset form
+    this.setState({ search: '' })
   }
 
   //Query the api and add results to component's state
   handleAPI = search => {
     let currentPage = this.state.currentPage
-    console.log('in handleAPI', currentPage)
 
     return fetch(`http://hn.algolia.com/api/v1/search?query=${search}?page=${currentPage}`)
     .then(resp => resp.json())
     .then(results => {
-      console.log(results)
       this.setState({
         results: results.hits,
         pagesTotal: results.nbPages,
@@ -56,25 +51,19 @@ class Search extends Component {
     .catch(error => console.log(error))
   }
 
-  //Function only works second time I click it/numbering is off
-  //Incorporate into state with a boolean
-  incrementPage = page => {
-    console.log('before incrementPage', page)
-    this.setState({
-      currentPage: page + 1,
-    })
-    console.log('after incrementPage', this.state.currentPage)
+  pageToggle = () => {
+    this.state.nextPage = !this.state.nextPage
+  }
+
+  changePage = (page, change) => {
+    if (change) {
+      this.setState({currentPage: page + 1})
+    } else {
+      this.setState({currentPage: page - 1})
+    }
     this.handleAPI(this.state.search)
   }
 
-  decrementPage = page => {
-    this.setState({
-      currentPage: page - 1
-    })
-    this.handleAPI(this.state.search)
-  }
-
-//Form has automatic validation for empty field
   render() {
     console.log(this.state.results)
 
@@ -101,13 +90,12 @@ class Search extends Component {
         <div>
           {this.state.results.length === 0 ?
             null :
-            <Next
+            <Increment
             pagesTotal={this.state.pagesTotal}
             currentPage={this.state.currentPage}
-            handleAPI={this.handleAPI}
-            search={this.state.search}
-            incrementPage={this.incrementPage}
-            decrementPage={this.decrementPage}
+            next={this.state.next}
+            previous={this.state.previous}
+            changePage={this.changePage}
             />
           }
         </div>

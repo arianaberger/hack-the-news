@@ -1,12 +1,11 @@
 import React from 'react';
 import { Dropdown } from 'react-bootstrap';
 
-
 const SearchTerms = (props) => {
 
-  const SearchTerms = () => {
+  const Searches = () => {
     if (props.searches.length === 0) {
-      return "No searches yet"
+      return "None yet..."
     } else {
       return (props.searches.map(term => (
         <Dropdown.Item key={term}>{term}</Dropdown.Item>
@@ -17,11 +16,11 @@ const SearchTerms = (props) => {
   return(
     <Dropdown>
       <Dropdown.Toggle variant="info" size="sm">
-        Recent searches...
+        Recent searches
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <SearchTerms />
+        <Searches />
       </Dropdown.Menu>
     </Dropdown>
   )
