@@ -5,6 +5,7 @@ import { saveSearch } from './actions/searches';
 import SearchTerms from './SearchTerms';
 import Results from './Results';
 import Next from './Next';
+import SearchForm from './SearchForm';
 
 class Search extends Component {
 
@@ -20,6 +21,7 @@ class Search extends Component {
   }
 
   handleOnChange = e => {
+    console.log(e)
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -56,6 +58,7 @@ class Search extends Component {
   }
 
   //Function only works second time I click it/numbering is off
+  //Incorporate into state with a boolean
   incrementPage = page => {
     console.log('before incrementPage', page)
     this.setState({
@@ -77,6 +80,12 @@ class Search extends Component {
     console.log(this.state.results)
     return (
       <div>
+        <SearchForm
+          handleSubmit={this.handleSubmit}
+          value={this.state.search}
+          onChange={this.handleOnChange}
+        />
+
         <Form onSubmit={this.handleSubmit} id="searchForm">
           <Form.Group controlId="searchInput">
             <Form.Control
@@ -95,24 +104,26 @@ class Search extends Component {
           </div>
         </Form>
 
-        <SearchTerms searches={this.props.searches} />
-        <Results results={this.state.results} />
+        <SearchTerms
+          searches={this.props.searches}
+        />
+        <Results
+          results={this.state.results}
+        />
 
         <div>
-        {this.state.results.length === 0 ?
-          null :
-          <Next
-          pagesTotal={this.state.pagesTotal}
-          currentPage={this.state.currentPage}
-          handleAPI={this.handleAPI}
-          search={this.state.search}
-          incrementPage={this.incrementPage}
-          decrementPage={this.decrementPage}
-          />
-        }
+          {this.state.results.length === 0 ?
+            null :
+            <Next
+            pagesTotal={this.state.pagesTotal}
+            currentPage={this.state.currentPage}
+            handleAPI={this.handleAPI}
+            search={this.state.search}
+            incrementPage={this.incrementPage}
+            decrementPage={this.decrementPage}
+            />
+          }
         </div>
-
-
       </div>
     )
   }

@@ -1,22 +1,25 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
+
+//Buttons should only appears once search is started/user is on 2nd page for back button
 const Next = (props) => {
   for (let i = 0; i < props.pagesTotal; i++) {
     return (
     <div>
-    <button
+    <Button
       onClick={() => {
         props.decrementPage(props.currentPage)
       }}>
         Previous
-      </button>
+      </Button>
 
-      <button
+      <Button
         onClick={() => {
           props.incrementPage(props.currentPage)
         }}>
           Next
-      </button>
+      </Button>
 
 
       </div>

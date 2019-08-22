@@ -6,7 +6,6 @@ import Search from './Search';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
 
         <Search />
@@ -19,7 +18,6 @@ function App() {
         >
           API Link
         </a>
-      </header>
     </div>
   );
 }

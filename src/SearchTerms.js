@@ -1,4 +1,5 @@
 import React from 'react';
+import Select from 'react-select';
 
 const SearchTerms = (props) => {
 
@@ -9,6 +10,12 @@ const SearchTerms = (props) => {
   return(
     <>
       <ul>{searchTerms}</ul>
+      <div>
+        <Select
+          options={SearchTerms}
+          defaultValue="Your recent searches..."
+        />
+      </div>
     </>
   )
 }

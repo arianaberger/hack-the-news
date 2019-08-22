@@ -1,5 +1,5 @@
 import React from 'react';
-// import Moment from 'react-moment';
+import Moment from 'react-moment';
 //Moment is giving me issues:  Moment format="MMM DD, YYYY"
 
 const Results = (props) => {
@@ -19,7 +19,7 @@ const Results = (props) => {
         <div className="ResultSub">
           <span>{author}</span>
           <span>
-              {date}
+              | <Moment format="MMM DD, YYYY">{date}</Moment>
          </span>
        </div>
      </div>
