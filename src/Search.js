@@ -1,9 +1,9 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { saveSearch } from './actions/searches';
-import Results from './Results';
-import Increment from './Increment';
-import SearchForm from './SearchForm';
+import Results from './components/Results';
+import Increment from './components/Increment';
+import SearchForm from './components/SearchForm';
 
 class Search extends Component {
 

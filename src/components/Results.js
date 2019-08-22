@@ -1,6 +1,5 @@
 import React from 'react';
 import Moment from 'react-moment';
-//Moment is giving me issues:  Moment format="MMM DD, YYYY"
 
 const Results = (props) => {
 
