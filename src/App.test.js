@@ -1,16 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '../App';
-import { shallow } from './enzyme';
-
-test('renders without crashing', () => {
-	const app = shallow(<App/>);
-	expect(app.containsAnyMatchingElements([<a>
-        Learn React
-      </a>
-    ])
-  ).toBe(true);
-});
+import App from './App';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');

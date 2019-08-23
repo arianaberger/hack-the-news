@@ -8,7 +8,9 @@ const SearchTerms = (props) => {
       return "None yet..."
     } else {
       return (props.searches.map(term => (
-        <Dropdown.Item key={term}>{term}</Dropdown.Item>
+        <Dropdown.Item key={term}>
+            {term}
+          </Dropdown.Item>
       )))
     }
   }

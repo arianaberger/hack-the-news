@@ -101,13 +101,14 @@ class Search extends Component {
   }
 }
 
-//Need to look into why I have to call state.state to access search array
+//Is there a better way to set state to avoid calling state.state?
 const mapStateToProps = (state) => {
   return {
     searches: state.state.searches
   }
 }
 
+//Get access to action that dispatches to reducer and saves search terms
 const mapDispatchToProps = { saveSearch }
 
 //Connect to store and allow dispatching to reducer

@@ -25,7 +25,9 @@ const SearchForm = (props) => {
           </Button>
         </Col>
         <Col>
-          <SearchTerms searches={props.searches} />
+          <SearchTerms
+            searches={props.searches}
+          />
         </Col>
       </Form.Row>
     </Form>
