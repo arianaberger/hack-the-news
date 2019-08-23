@@ -8,6 +8,11 @@ Hack The News
   <img src="https://user-images.githubusercontent.com/26906993/63561101-ab026200-c526-11e9-90d2-ebab358d5741.png" align="middle" width="60%" height="60%">
 </p>
 
+<p>
+Read my blog post about creating the app [here](https://thebergermeister.wordpress.com/2019/08/23/hack-the-news/)
+
+</p>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Quick-Start Instructions
@@ -25,6 +30,6 @@ $ npm install
 # Run the app and open http://localhost:3000 to view it in the browser
 $ npm start
 
-# Launch the test runner in  interactive watch mode
+# Launch the test runner in interactive watch mode
 $ npm test
 ```
