@@ -2,15 +2,14 @@
 Hack The News
 </h1>
 
-<h4 align="center">Search Hacker News and view articles using key words without even visiting their website</h4>
+<h4 align="center">Search Hacker News and view articles using key words without ever visiting their website</h4>
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/26906993/63561101-ab026200-c526-11e9-90d2-ebab358d5741.png" align="middle" width="60%" height="60%">
 </p>
 
-<hr>
 
-Read my blog post about creating the app [here](https://thebergermeister.wordpress.com/2019/08/23/hack-the-news/)
+<h5>Read my blog post about creating the app [here](https://thebergermeister.wordpress.com/2019/08/23/hack-the-news/)</h5>
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
