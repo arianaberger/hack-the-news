@@ -8,9 +8,7 @@ Hack The News
   <img src="https://user-images.githubusercontent.com/26906993/63561101-ab026200-c526-11e9-90d2-ebab358d5741.png" align="middle" width="60%" height="60%">
 </p>
 
-Read my blog post about creating the app [here](https://thebergermeister.wordpress.com/2019/08/23/hack-the-news/)
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Read my blog post about creating the app [here](https://thebergermeister.wordpress.com/2019/08/23/hack-the-news/).
 
 ## Quick-Start Instructions
 
